@@ -7,11 +7,13 @@
       <p> {{ produto.descricao }}</p>
 
     </div>
+    {{ url }}
   </section>
 </template>
 
 <script>
 import { api } from '@/services.js'
+import { serialize } from '@/helpers.js'
 
 export default {
   data() {
@@ -19,12 +21,23 @@ export default {
       produtos: null
     }
   },
+  computed: {
+    url() {
+      const query = serialize(this.$route.query);
+      return `/produto?_limit=10"${query}`;
+    }
+  },
   methods: {
     getProdutos() {
-      api.get('/produto')
+      api.get(this.url)
         .then((r) => {
           this.produtos = r.data
         });
+    }
+  },
+  watch: {
+    url() {
+      this.getProdutos();
     }
   },
   created() {
