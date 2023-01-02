@@ -22,8 +22,8 @@
 
 <script>
 import ProdutosPaginar from './ProdutosPaginar.vue';
-import { api } from '@/services.js'
-import { serialize } from '@/helpers.js'
+import { api } from '@/services.js';
+import { serialize } from '@/helpers.js';
 
 export default {
   name: 'ProdutosLista',

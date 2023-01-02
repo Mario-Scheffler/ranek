@@ -4,14 +4,23 @@
       <router-link to="/" class="logo">
         <img src="@/assets/ranek.svg" alt="Ranek">
       </router-link>
-      <router-link class="btn" to="/login">Vender / Login</router-link>
+      <router-link v-if="$store.state.login" class="btn" to="login">{{ nome }}</router-link>
+      <router-link v-else class="btn" to="/login">Vender / Login</router-link>
     </nav>
   </header>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
-  name: 'TheHeader'
+  name: "TheHeader",
+  computed: {
+    nome() {
+      return this.$store.state.usuario.nome.replace(/ .*/, '');
+    }
+  },
+  components: { RouterLink }
 };
 </script>
 
