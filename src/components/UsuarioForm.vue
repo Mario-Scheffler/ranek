@@ -26,14 +26,28 @@
 
 <script>
 import { mapFields } from '@/helpers.js'
+import { getCep } from '@/services.js'
 
 export default {
   computed: {
     ...mapFields({
       fields: ['nome', 'email', 'senha', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado'],
       base: 'usuario',
-      mutation: ''
+      mutation: 'UPDATE_USUARIO'
     }),
+  },
+  methods: {
+    preencherCep() {
+      const cep = this.cep.replace(/\D/g, '');
+      if (cep.length === 8) {
+        getCep(cep).then(r => {
+          this.rua = r.data.logradouro;
+          this.bairro = r.data.bairro;
+          this.estado = r.data.uf;
+          this.cidade = r.data.localidade;
+        })
+      }
+    }
   }
 };
 </script>
