@@ -37,8 +37,3 @@ export default {
 .info {
   align-self: end;
 }
-
-.preco {}
-
-.titulo {}
-</style>
