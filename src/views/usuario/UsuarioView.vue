@@ -51,7 +51,7 @@ export default {
 @media screen and (max-width: 500px) {
   .usuario {
     grid-template-columns: 1fr;
-    margin: 00px auto;
+    margin: 0px auto;
   }
 }
 
