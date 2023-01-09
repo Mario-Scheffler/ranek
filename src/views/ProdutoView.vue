@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import PaginaCarregando from '@/components/PaginaCarregando.vue';
 import { api } from '@/services.js';
 
 export default {
@@ -41,7 +40,6 @@ export default {
   created() {
     this.getProduto();
   },
-  components: { PaginaCarregando }
 };
 </script>
 
